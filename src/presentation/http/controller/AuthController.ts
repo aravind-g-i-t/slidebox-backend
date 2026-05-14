@@ -1,0 +1,114 @@
+import type { ISignupUseCase } from "../../../application/iUseCases/auth/ISignupUseCase.js";
+import type { Request, Response, NextFunction } from "express";
+import { STATUS_CODES } from "../../../shared/constants/httpStatus.js";
+import { ResponseBuilder } from "../../../shared/utils/ResponseBuilder.js";
+import { MESSAGES } from "../../../shared/constants/messages.js";
+import type { ISigninUseCase } from "../../../application/iUseCases/auth/ISigninUseCase.js";
+import type { IVerifyOTPUseCase } from "../../../application/iUseCases/auth/IVerifyOTPUseCase.js";
+import { AppError } from "../../../shared/errors/AppError.js";
+import type { ITokenRefreshUseCase } from "../../../application/iUseCases/auth/ITokenRefreshUseCase.js";
+
+export class AuthController {
+    constructor(
+        private _signupUseCase: ISignupUseCase,
+        private _verifyOTPUseCase: IVerifyOTPUseCase,
+        private _signinUseCase: ISigninUseCase,
+        private _tokenRefreshUseCase:ITokenRefreshUseCase,
+    ) { }
+
+    async signup(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const { name, email, phone, password } = req.body;
+
+            const result= await this._signupUseCase.execute({
+                name,
+                email,
+                phone,
+                password
+            });
+
+            res.status(STATUS_CODES.CREATED).json(ResponseBuilder.success(MESSAGES.USER_CREATED,result))
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    verifyOTP = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const { email, otp } = req.body;
+
+
+                await this._verifyOTPUseCase.execute({ email, otp });
+                res.status(STATUS_CODES.CREATED).json(
+                    ResponseBuilder.success(MESSAGES.ACCOUNT_CREATED_SUCCESS)
+                );
+                return;
+
+        
+        } catch (error) {
+            next(error);
+        }
+    };
+
+    async signin(req: Request, res: Response, next: NextFunction): Promise<void> {
+        try {
+            const { email, password } = req.body;
+
+            const result = await this._signinUseCase.execute({
+                email,
+                password
+            });
+
+            res.cookie("refreshToken", result.refreshToken, {
+                httpOnly: true,
+                secure: false,
+                sameSite: "lax"
+            })
+            res.cookie("accessToken", result.accessToken, {
+                httpOnly: true,
+                secure: false,
+                sameSite: "lax"
+            })
+
+            res.status(STATUS_CODES.OK).json(ResponseBuilder.success(MESSAGES.USER_CREATED, {
+                user: result.user
+            }))
+        } catch (error) {
+            next(error)
+        }
+    }
+
+    logout = async (req:Request, res: Response) => {
+        res.clearCookie("refreshToken");
+        res.clearCookie("accessToken");
+
+        res.status(STATUS_CODES.OK).json(
+            ResponseBuilder.success(MESSAGES.LOGOUT_SUCCESS)
+        );
+    };
+
+    tokenRefresh = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const refreshToken = req.cookies?.refreshToken;
+            if (!refreshToken) {
+                throw new AppError(MESSAGES.SESSION_EXPIRED, STATUS_CODES.BAD_REQUEST);
+            }
+
+            const accessToken = await this._tokenRefreshUseCase.execute(refreshToken);
+
+            res.cookie("accessToken", accessToken, {
+                httpOnly: true,
+                secure: false,
+                sameSite: "lax",
+            });
+
+            res.status(STATUS_CODES.OK).json(
+                ResponseBuilder.success(MESSAGES.REFRESH_TOKEN_SUCCESS, { accessToken })
+            );
+        } catch (error) {
+            next(error);
+        }
+    };
+
+    
+}
