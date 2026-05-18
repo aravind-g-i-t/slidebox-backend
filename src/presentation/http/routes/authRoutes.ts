@@ -43,4 +43,8 @@ authRoutes.post(ROUTES.RESET_OTP,(req:Request,res:Response,next:NextFunction)=>a
 
 authRoutes.post(ROUTES.RESET_PASSWORD,(req:Request,res:Response,next:NextFunction)=>authController.resetPassword(req,res,next))
 
+// resend OTP
+
+authRoutes.post(ROUTES.RESEND_OTP,(req:Request,res:Response,next:NextFunction)=>authController.resendOTP(req,res,next))
+
 export default authRoutes

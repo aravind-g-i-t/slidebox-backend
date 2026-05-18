@@ -10,6 +10,7 @@ import type { ITokenRefreshUseCase } from "../../../application/iUseCases/auth/I
 import type { IVerifyResetOTPUseCase } from "../../../application/iUseCases/auth/IVerifyResetOTPUseCase.js";
 import type { IResetPasswordUseCase } from "../../../application/iUseCases/auth/IResetPasswordUseCase.js";
 import type { IVerifyEmailUseCase } from "../../../application/iUseCases/auth/IVerifyEmailUseCase.js";
+import type { IResendOTPUseCase } from "../../../application/iUseCases/auth/IResendOTPUseCase.js";
 
 export class AuthController {
     constructor(
@@ -19,7 +20,8 @@ export class AuthController {
         private _tokenRefreshUseCase: ITokenRefreshUseCase,
         private _verifyEmailUseCase: IVerifyEmailUseCase,
         private _verifyResetOTPUseCase: IVerifyResetOTPUseCase,
-        private _resetPasswordUseCase: IResetPasswordUseCase
+        private _resetPasswordUseCase: IResetPasswordUseCase,
+        private _resendOTPUseCase: IResendOTPUseCase
     ) { }
 
     async signup(req: Request, res: Response, next: NextFunction): Promise<void> {
@@ -55,6 +57,25 @@ export class AuthController {
             next(error);
         }
     };
+
+    resendOTP = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const { email } = req.body;
+
+
+            const result = await this._resendOTPUseCase.execute(email);
+            res.status(STATUS_CODES.CREATED).json(
+                ResponseBuilder.success(MESSAGES.OTP_SENT, {
+                    otpExpiresAt: result
+                })
+            );
+
+
+        } catch (error) {
+            next(error);
+        }
+    };
+
 
     async signin(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
@@ -123,7 +144,7 @@ export class AuthController {
 
             const result = await this._verifyEmailUseCase.execute( email );
             res.status(STATUS_CODES.CREATED).json(
-                ResponseBuilder.success(MESSAGES.OTP_VERIFIED, {
+                ResponseBuilder.success(MESSAGES.OTP_SENT, {
                     otpExpiresAt: result
                 })
             );
@@ -166,6 +187,8 @@ export class AuthController {
             next(error);
         }
     };
+
+    
 
 
 }

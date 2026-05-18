@@ -1,3 +1,4 @@
+import { ResendOTPUseCase } from "../../application/useCases/auth/ResendOTPUseCase.js";
 import { ResetPasswordUseCase } from "../../application/useCases/auth/ResetPasswordUseCase.js";
 import { SigninUseCase } from "../../application/useCases/auth/SigninUseCase.js";
 import { SignupUseCase } from "../../application/useCases/auth/SignupUseCase.js";
@@ -29,5 +30,7 @@ const verifyEmailUseCase= new VerifyEmailUseCase(userRepository,emailService,cac
 const verifyResetOTPUseCase= new VerifyResetOTPUseCase(cacheService)
 const resetPasswordUseCase= new ResetPasswordUseCase(userRepository,cacheService)
 
+const resendOTPUseCase = new ResendOTPUseCase(emailService,cacheService)
 
-export const authController= new AuthController(signupUseCase,verifyOTPUseCase,signinUseCase,tokenRefreshUseCase,verifyEmailUseCase,verifyResetOTPUseCase,resetPasswordUseCase)
+
+export const authController= new AuthController(signupUseCase,verifyOTPUseCase,signinUseCase,tokenRefreshUseCase,verifyEmailUseCase,verifyResetOTPUseCase,resetPasswordUseCase,resendOTPUseCase)

@@ -27,7 +27,7 @@ export class SignupUseCase implements ISignupUseCase {
     ) { }
 
     async execute(input: SignupInputDTO): Promise<{email:string; otpExpiresAt:Date}> {
-        const { name, email, phone, password } = input;
+        const { email } = input;
 
         const existingUser = await this._userRepository.findByEmail(email);
 
@@ -47,7 +47,5 @@ export class SignupUseCase implements ISignupUseCase {
         await this._cacheService.set<string>(otpKey, otp, OTP_TTL);
         const otpExpiresAt = new Date(Date.now() + 2 * 60 * 1000)
         return { email, otpExpiresAt }
-
-
     }
 }
