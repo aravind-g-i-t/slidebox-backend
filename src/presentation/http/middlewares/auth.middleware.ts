@@ -19,8 +19,9 @@ type Role = "admin" | "learner" | "instructor";
 const createAuthMiddleware = (tokenService: ITokenService) => {
     return async (req: Request, res: Response, next: NextFunction) => {
 
-
+        
         const token = req.cookies?.accessToken;
+        console.log("token",token);
         
         if (!token) {
             return res.status(STATUS_CODES.UNAUTHORIZED).json({ message: "No token provided" });

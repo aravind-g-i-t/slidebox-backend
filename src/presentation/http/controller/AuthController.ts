@@ -67,13 +67,13 @@ export class AuthController {
 
             res.cookie("refreshToken", result.refreshToken, {
                 httpOnly: true,
-                secure: false,
-                sameSite: "lax"
+                secure: true,
+                sameSite: "none"
             })
             res.cookie("accessToken", result.accessToken, {
                 httpOnly: true,
-                secure: false,
-                sameSite: "lax"
+                secure: true,
+                sameSite: "none"
             })
 
             res.status(STATUS_CODES.OK).json(ResponseBuilder.success(MESSAGES.USER_CREATED, {
