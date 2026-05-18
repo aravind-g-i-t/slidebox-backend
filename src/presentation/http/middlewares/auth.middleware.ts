@@ -29,7 +29,6 @@ const createAuthMiddleware = (tokenService: ITokenService) => {
         
         try {
             decoded = await tokenService.verifyAccessToken(token);
-            console.log(token);
         } catch {
             return res.status(STATUS_CODES.UNAUTHORIZED).json({ message: MESSAGES.INVALID_TOKEN });
         }

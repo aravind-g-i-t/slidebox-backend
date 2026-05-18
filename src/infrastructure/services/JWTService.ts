@@ -3,6 +3,8 @@ import type { ITokenService } from '../../domain/interfaces/ITokenService.js';
 import { AppError } from '../../shared/errors/AppError.js';
 import { MESSAGES } from '../../shared/constants/messages.js';
 import { STATUS_CODES } from '../../shared/constants/httpStatus.js';
+import dotenv from "dotenv"
+dotenv.config()
 
 
 const accessTokenMaxAge = (process.env.ACCESS_TOKEN_MAX_AGE as SignOptions["expiresIn"]|| "15m") 
@@ -28,6 +30,7 @@ export class JWTService implements ITokenService {
 
 
     async generateRefreshToken(payload: object): Promise<string> {
+        
         const token= jwt.sign(payload, this.refreshSecret, { expiresIn: refreshTokenMaxAge });
         if(!token){
             throw new AppError(MESSAGES.REFRESH_TOKEN_NOT_CREATED,STATUS_CODES.SERVICE_UNAVAILABLE,false)
@@ -36,17 +39,13 @@ export class JWTService implements ITokenService {
     }
 
     async verifyAccessToken<T>(token: string): Promise<T> {
-        console.log(token,this.accessSecret,this.refreshSecret);
         
         try {
             
             const result= jwt.verify(token, this.accessSecret) as T;
-            console.log("result");
-            console.log(result);
             
             return result;
-        } catch (err){
-            console.log(err);
+        } catch{
             
             throw new AppError(MESSAGES.INVALID_TOKEN,STATUS_CODES.UNAUTHORIZED);
         }

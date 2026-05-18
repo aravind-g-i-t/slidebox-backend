@@ -53,7 +53,11 @@ export const MESSAGES = {
     IMAGES_REARRANGED: "Images rearranged successfully",
     UNAUTHORIZED: "You are not authorized to perform this action",
     IMAGE_UPDATED: "Image updated successfully",
-    IMAGE_DELETED: "Image deleted successfully"
+    IMAGE_DELETED: "Image deleted successfully",
+
+
+    INVALID_RESET_TOKEN: "The reset token is invalid or expired.",
+    PASSWORD_RESET: "Password has been reset successfully."
 
 } as const;
 

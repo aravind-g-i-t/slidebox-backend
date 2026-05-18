@@ -1,7 +1,10 @@
+import { ResetPasswordUseCase } from "../../application/useCases/auth/ResetPasswordUseCase.js";
 import { SigninUseCase } from "../../application/useCases/auth/SigninUseCase.js";
 import { SignupUseCase } from "../../application/useCases/auth/SignupUseCase.js";
 import { TokenRefreshUseCase } from "../../application/useCases/auth/TokenRefreshUseCase.js";
+import { VerifyEmailUseCase } from "../../application/useCases/auth/VerifyEmailUseCase.js";
 import { VerifyOTPUseCase } from "../../application/useCases/auth/VerifyOTPUseCase.js";
+import { VerifyResetOTPUseCase } from "../../application/useCases/auth/VerifyResetOTPUseCase.js";
 import { UserRepository } from "../../infrastructure/database/mongo/repositories/UserRepository.js";
 import { JWTService } from "../../infrastructure/services/JWTService.js";
 import { NodemailerService } from "../../infrastructure/services/NodemailerService.js";
@@ -21,5 +24,10 @@ const verifyOTPUseCase= new VerifyOTPUseCase(cacheService,userRepository)
 
 const tokenRefreshUseCase= new TokenRefreshUseCase(tokenService,userRepository)
 
+const verifyEmailUseCase= new VerifyEmailUseCase(userRepository,emailService,cacheService)
 
-export const authController= new AuthController(signupUseCase,verifyOTPUseCase,signinUseCase,tokenRefreshUseCase)
+const verifyResetOTPUseCase= new VerifyResetOTPUseCase(cacheService)
+const resetPasswordUseCase= new ResetPasswordUseCase(userRepository,cacheService)
+
+
+export const authController= new AuthController(signupUseCase,verifyOTPUseCase,signinUseCase,tokenRefreshUseCase,verifyEmailUseCase,verifyResetOTPUseCase,resetPasswordUseCase)

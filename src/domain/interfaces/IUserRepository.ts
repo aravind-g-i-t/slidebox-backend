@@ -11,4 +11,5 @@ export interface IUserRepository{
     findByEmail(email:string): Promise<User | null>;
     findById(id: string): Promise<User | null>
     create(user:CreateUserInput):Promise<User>
+    findOneAndUpdate(filter:Partial<User>,updateData:Partial<CreateUserInput>):Promise<User | null>
 }

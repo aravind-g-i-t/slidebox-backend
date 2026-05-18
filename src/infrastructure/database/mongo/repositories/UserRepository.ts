@@ -19,6 +19,11 @@ export class UserRepository implements IUserRepository {
         return this._toEntity(doc)
     }
 
+    async findOneAndUpdate(filter: Partial<User>, updateData: Partial<CreateUserInput>): Promise<User | null> {
+        const doc = await UserModel.findOneAndUpdate(filter, updateData, { returnDocument: "after" });
+        return doc ? this._toEntity(doc) : null;
+    }
+
     private _toEntity(doc:UserDoc):User{
         return {
             id: doc._id.toString(),

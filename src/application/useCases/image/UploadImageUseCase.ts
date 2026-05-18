@@ -15,23 +15,19 @@ export class UploadImageUseCase {
                 "Each image must have a title"
             );
         }
-        console.log(data.files[0]);
         
         const lastOrder =
             await this._imageRepository.getLastOrder(
                 data.userId
             );
-        console.log(lastOrder);
         
         for (let i = 0; i < data.files.length; i++) {
             const file = data.files[i]!;
-            console.log("file",file);
             
             const uploadResult =
                 await this._fileStorageService.uploadImage(
                     file?.path
                 );
-            console.log("uploadResult",uploadResult);
             
 
             uploadedImages.push({

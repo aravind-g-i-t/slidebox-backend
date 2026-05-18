@@ -10,7 +10,12 @@ export const ROUTES = {
     REARRANGE:"/rearrange",
     TITLE:"/:imageId/title",
     FILE: "/:imageId/file",
-    IMAGE:"/:imageId"
+    IMAGE:"/:imageId",
+    RESEND_OTP:"/otp/resend",
+    RESET_OTP:"/reset/otp",
+    GOOGLE_SIGNIN:"/google",
+    VERIFY_EMAIL:'/reset/email',
+    RESET_PASSWORD:'/reset/password'
 } as const
 
 export type Routes = typeof ROUTES[keyof typeof ROUTES];

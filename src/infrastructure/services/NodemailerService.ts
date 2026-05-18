@@ -20,7 +20,6 @@ export class NodemailerService implements IEmailService {
 
     async send(email: string, subject: string, text: string): Promise<void> {
         try {
-            console.log("emailService")
             const mailOptions = {
                 from: slideboxEmail,
                 to: email,

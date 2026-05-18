@@ -27,7 +27,6 @@ export class SignupUseCase implements ISignupUseCase {
     ) { }
 
     async execute(input: SignupInputDTO): Promise<{email:string; otpExpiresAt:Date}> {
-        console.log("Entered useCase")
         const { name, email, phone, password } = input;
 
         const existingUser = await this._userRepository.findByEmail(email);
@@ -42,22 +41,13 @@ export class SignupUseCase implements ISignupUseCase {
             'Slide Box OTP verification',
             `Your OTP for Slide Box account is ${otp}`
         );
-        console.log("otp", otp)
         const otpKey = `${email}:otp`;
         const signupDataKey = `${email}:signup`;
         await this._cacheService.set<SignupData>(signupDataKey, input, SIGNUPDATA_TTL);
         await this._cacheService.set<string>(otpKey, otp, OTP_TTL);
         const otpExpiresAt = new Date(Date.now() + 2 * 60 * 1000)
-        console.log(otpExpiresAt)
         return { email, otpExpiresAt }
 
-        // const user = await this._userRepository.create({
-        //     name,
-        //     email,
-        //     phone,
-        //     password:hashedPassword
-        // })
 
-        // return user
     }
 }

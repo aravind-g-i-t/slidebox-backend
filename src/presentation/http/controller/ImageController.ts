@@ -24,7 +24,6 @@ export class ImageController {
     async uploadImage(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const files = req.files as Express.Multer.File[];
-            console.log(req.files);
 
 
             const metadatas: { title: string }[] =

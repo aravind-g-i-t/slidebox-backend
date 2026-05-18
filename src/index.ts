@@ -13,6 +13,8 @@ const PORT=process.env.PORT || 5000;
 
 async function startServer() {
     try {
+        console.log(PORT);
+        
 
         await connectMongoDB();
         await connectRedis();

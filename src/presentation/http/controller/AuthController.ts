@@ -7,27 +7,33 @@ import type { ISigninUseCase } from "../../../application/iUseCases/auth/ISignin
 import type { IVerifyOTPUseCase } from "../../../application/iUseCases/auth/IVerifyOTPUseCase.js";
 import { AppError } from "../../../shared/errors/AppError.js";
 import type { ITokenRefreshUseCase } from "../../../application/iUseCases/auth/ITokenRefreshUseCase.js";
+import type { IVerifyResetOTPUseCase } from "../../../application/iUseCases/auth/IVerifyResetOTPUseCase.js";
+import type { IResetPasswordUseCase } from "../../../application/iUseCases/auth/IResetPasswordUseCase.js";
+import type { IVerifyEmailUseCase } from "../../../application/iUseCases/auth/IVerifyEmailUseCase.js";
 
 export class AuthController {
     constructor(
         private _signupUseCase: ISignupUseCase,
         private _verifyOTPUseCase: IVerifyOTPUseCase,
         private _signinUseCase: ISigninUseCase,
-        private _tokenRefreshUseCase:ITokenRefreshUseCase,
+        private _tokenRefreshUseCase: ITokenRefreshUseCase,
+        private _verifyEmailUseCase: IVerifyEmailUseCase,
+        private _verifyResetOTPUseCase: IVerifyResetOTPUseCase,
+        private _resetPasswordUseCase: IResetPasswordUseCase
     ) { }
 
     async signup(req: Request, res: Response, next: NextFunction): Promise<void> {
         try {
             const { name, email, phone, password } = req.body;
 
-            const result= await this._signupUseCase.execute({
+            const result = await this._signupUseCase.execute({
                 name,
                 email,
                 phone,
                 password
             });
 
-            res.status(STATUS_CODES.CREATED).json(ResponseBuilder.success(MESSAGES.USER_CREATED,result))
+            res.status(STATUS_CODES.CREATED).json(ResponseBuilder.success(MESSAGES.USER_CREATED, result))
         } catch (error) {
             next(error)
         }
@@ -38,13 +44,13 @@ export class AuthController {
             const { email, otp } = req.body;
 
 
-                await this._verifyOTPUseCase.execute({ email, otp });
-                res.status(STATUS_CODES.CREATED).json(
-                    ResponseBuilder.success(MESSAGES.ACCOUNT_CREATED_SUCCESS)
-                );
-                return;
+            await this._verifyOTPUseCase.execute({ email, otp });
+            res.status(STATUS_CODES.CREATED).json(
+                ResponseBuilder.success(MESSAGES.ACCOUNT_CREATED_SUCCESS)
+            );
+            return;
 
-        
+
         } catch (error) {
             next(error);
         }
@@ -78,7 +84,7 @@ export class AuthController {
         }
     }
 
-    logout = async (req:Request, res: Response) => {
+    logout = async (req: Request, res: Response) => {
         res.clearCookie("refreshToken");
         res.clearCookie("accessToken");
 
@@ -110,5 +116,56 @@ export class AuthController {
         }
     };
 
-    
+    verifyEmail = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const { email } = req.body;
+
+
+            const result = await this._verifyEmailUseCase.execute( email );
+            res.status(STATUS_CODES.CREATED).json(
+                ResponseBuilder.success(MESSAGES.OTP_VERIFIED, {
+                    otpExpiresAt: result
+                })
+            );
+
+
+        } catch (error) {
+            next(error);
+        }
+    };
+
+
+    verifyResetOTP = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const { email, otp } = req.body;
+
+
+            const result = await this._verifyResetOTPUseCase.execute({ email, otp });
+            res.status(STATUS_CODES.CREATED).json(
+                ResponseBuilder.success(MESSAGES.OTP_VERIFIED, result)
+            );
+
+
+        } catch (error) {
+            next(error);
+        }
+    };
+
+    resetPassword = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const { resetToken, password } = req.body;
+
+
+            await this._resetPasswordUseCase.execute({ resetToken, newPassword: password });
+            res.status(STATUS_CODES.CREATED).json(
+                ResponseBuilder.success(MESSAGES.PASSWORD_RESET)
+            );
+
+
+        } catch (error) {
+            next(error);
+        }
+    };
+
+
 }

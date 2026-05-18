@@ -12,7 +12,6 @@ export class ImageRepository
         images: CreateImageInput[]
     ): Promise<Image[]> {
 
-        console.log("images", images);
 
         const docs = await ImageModel.insertMany(images);
         return docs.map(doc => {
@@ -94,7 +93,7 @@ export class ImageRepository
         const doc = await ImageModel.findByIdAndUpdate(
             id,
             { $set: updateData },
-            { new: true }
+            { returnDocument: "after" }
         ).lean();
         return doc ? this._toEntity(doc) : null
 
