@@ -1,14 +1,16 @@
 import type { IFileStorageService } from "../../../domain/interfaces/IFileStorageService.js";
 import type { IImageRepository } from "../../../domain/interfaces/IImageRepository.js";
-import type { UploadImageInputDTO } from "../../iUseCases/image/IUploadImageUseCase.js";
+import type { ImageForDisplay } from "../../iUseCases/image/IGetImagesUseCase.js";
+import type { IUploadImageUseCase, UploadImageInputDTO } from "../../iUseCases/image/IUploadImageUseCase.js";
+import { ImageMapper } from "../../mapper/ImageMapper.js";
 
-export class UploadImageUseCase {
+export class UploadImageUseCase implements IUploadImageUseCase {
     constructor(
         private _imageRepository: IImageRepository,
         private _fileStorageService: IFileStorageService
     ) { }
 
-    async execute(data: UploadImageInputDTO) {
+    async execute(data: UploadImageInputDTO):Promise<ImageForDisplay[]> {
         const uploadedImages = [];
         if (data.files.length !== data.metadatas.length) {
             throw new Error(
@@ -48,14 +50,6 @@ export class UploadImageUseCase {
             uploadedImages
         );
 
-        return images.map(image => {
-                return {
-                    id: image.id,
-                    title: image.title,
-                    imageUrl: image.imageUrl,
-                    order: image.order,
-                    createdAt: image.createdAt
-                }
-            }).reverse()
+        return images.map(image => ImageMapper.toImageForDisplay(image)).reverse();
     }
 }

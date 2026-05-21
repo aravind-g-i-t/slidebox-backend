@@ -1,10 +1,5 @@
-export interface Image {
-    id: string;
-    title: string;
-    imageUrl: string;
-    order: number;
-    createdAt: Date;
-}
+import type { ImageForDisplay } from "./IGetImagesUseCase.js";
+
 
 interface FileData {
     path: string;
@@ -20,5 +15,5 @@ export interface UploadImageInputDTO {
 
 
 export interface IUploadImageUseCase {
-    execute(input:UploadImageInputDTO):Promise<Image[]>
+    execute(input:UploadImageInputDTO):Promise<ImageForDisplay[]>
 }

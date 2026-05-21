@@ -1,4 +1,4 @@
-export interface Image {
+export interface ImageForDisplay {
     id: string;
     title: string;
     imageUrl: string;
@@ -8,7 +8,7 @@ export interface Image {
 
 export interface GetImagesOutputDTO{
     totalCount:number;
-    images:Image[]
+    images:ImageForDisplay[]
 }
 
 export interface GetImagesInputDTO{
