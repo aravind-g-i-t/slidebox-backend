@@ -3,10 +3,12 @@ export type CommonResponse<T = unknown> =
         success: true;
         message: string;
         data: T|undefined;
+        timestamp:string;
     }
     | {
         success: false;
         message: string;
+        timestamp:string;
 
     };
 
@@ -16,6 +18,7 @@ export class ResponseBuilder {
             success: true,
             message,
             data,
+            timestamp:new Date().toISOString()
         };
     }
 
@@ -26,6 +29,7 @@ export class ResponseBuilder {
         return {
             success: false,
             message,
+            timestamp:new Date().toISOString()
         };
     }
 }

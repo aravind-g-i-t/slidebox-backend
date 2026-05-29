@@ -11,9 +11,11 @@ import type { IVerifyResetOTPUseCase } from "../../../application/iUseCases/auth
 import type { IResetPasswordUseCase } from "../../../application/iUseCases/auth/IResetPasswordUseCase.js";
 import type { IVerifyEmailUseCase } from "../../../application/iUseCases/auth/IVerifyEmailUseCase.js";
 import type { IResendOTPUseCase } from "../../../application/iUseCases/auth/IResendOTPUseCase.js";
+import type { ILogger } from "../../../domain/interfaces/ILogger.js";
 
 export class AuthController {
     constructor(
+        private _logger: ILogger,
         private _signupUseCase: ISignupUseCase,
         private _verifyOTPUseCase: IVerifyOTPUseCase,
         private _signinUseCase: ISigninUseCase,
@@ -35,6 +37,8 @@ export class AuthController {
                 password
             });
 
+            this._logger.info(`User signup initiated: ${email}`);
+
             res.status(STATUS_CODES.CREATED).json(ResponseBuilder.success(MESSAGES.USER_CREATED, result))
         } catch (error) {
             next(error)
@@ -47,6 +51,7 @@ export class AuthController {
 
 
             await this._verifyOTPUseCase.execute({ email, otp });
+            this._logger.info(`Account verified: ${email}`);
             res.status(STATUS_CODES.CREATED).json(
                 ResponseBuilder.success(MESSAGES.ACCOUNT_CREATED_SUCCESS)
             );
@@ -85,6 +90,7 @@ export class AuthController {
                 email,
                 password
             });
+            this._logger.info(`User signed in: ${email}`);
 
             res.cookie("refreshToken", result.refreshToken, {
                 httpOnly: true,
@@ -108,7 +114,7 @@ export class AuthController {
     logout = async (req: Request, res: Response) => {
         res.clearCookie("refreshToken");
         res.clearCookie("accessToken");
-
+        this._logger.info("User logged out");
         res.status(STATUS_CODES.OK).json(
             ResponseBuilder.success(MESSAGES.LOGOUT_SUCCESS)
         );
@@ -178,6 +184,7 @@ export class AuthController {
 
 
             await this._resetPasswordUseCase.execute({ resetToken, newPassword: password });
+            this._logger.info("Password reset completed");
             res.status(STATUS_CODES.CREATED).json(
                 ResponseBuilder.success(MESSAGES.PASSWORD_RESET)
             );

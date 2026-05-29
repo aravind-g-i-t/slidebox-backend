@@ -10,6 +10,7 @@ import { UserRepository } from "../../infrastructure/database/mongo/repositories
 import { JWTService } from "../../infrastructure/services/JWTService.js";
 import { NodemailerService } from "../../infrastructure/services/NodemailerService.js";
 import { RedisCacheService } from "../../infrastructure/services/RedisCacheService.js";
+import { WinstonLogger } from "../../infrastructure/services/WinstonLogger.js";
 import { AuthController } from "../../presentation/http/controller/AuthController.js";
 
 
@@ -18,6 +19,7 @@ export const tokenService= new JWTService()
 const userRepository= new UserRepository();
 const emailService = new NodemailerService();
 const cacheService = new RedisCacheService()
+export const logger = new WinstonLogger()
 
 const signupUseCase= new SignupUseCase(userRepository,cacheService,emailService);
 const signinUseCase = new SigninUseCase(userRepository,tokenService);
@@ -33,4 +35,4 @@ const resetPasswordUseCase= new ResetPasswordUseCase(userRepository,cacheService
 const resendOTPUseCase = new ResendOTPUseCase(emailService,cacheService)
 
 
-export const authController= new AuthController(signupUseCase,verifyOTPUseCase,signinUseCase,tokenRefreshUseCase,verifyEmailUseCase,verifyResetOTPUseCase,resetPasswordUseCase,resendOTPUseCase)
+export const authController= new AuthController(logger,signupUseCase,verifyOTPUseCase,signinUseCase,tokenRefreshUseCase,verifyEmailUseCase,verifyResetOTPUseCase,resetPasswordUseCase,resendOTPUseCase)
