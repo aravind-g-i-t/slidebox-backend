@@ -4,10 +4,11 @@ import type { IEmailService } from "../../../domain/interfaces/IEmailService.js"
 import { generateOTP } from "../../../shared/utils/generateOTP.js";
 import dotenv from "dotenv";
 import type { IResendOTPUseCase } from "../../iUseCases/auth/IResendOTPUseCase.js";
+import { env } from "../../../config/env.js";
 dotenv.config()
 
 
-const OTP_TTL = parseInt(process.env.OTP_TTL_SECONDS!,10)
+const OTP_TTL = env.OTP_TTL_SECONDS
 
 
 export class ResendOTPUseCase implements IResendOTPUseCase{

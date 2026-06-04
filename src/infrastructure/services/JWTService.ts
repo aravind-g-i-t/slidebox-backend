@@ -4,19 +4,20 @@ import { AppError } from '../../shared/errors/AppError.js';
 import { MESSAGES } from '../../shared/constants/messages.js';
 import { STATUS_CODES } from '../../shared/constants/httpStatus.js';
 import dotenv from "dotenv"
+import { env } from '../../config/env.js';
 dotenv.config()
 
 
-const accessTokenMaxAge = (process.env.ACCESS_TOKEN_MAX_AGE as SignOptions["expiresIn"]|| "15m") 
-const refreshTokenMaxAge = (process.env.REFRESH_TOKEN_MAX_AGE as SignOptions["expiresIn"]|| "7d") 
+const accessTokenMaxAge = env.ACCESS_TOKEN_MAX_AGE as SignOptions["expiresIn"]|| "15m"
+const refreshTokenMaxAge = env.REFRESH_TOKEN_MAX_AGE as SignOptions["expiresIn"]|| "7d"
 
 
 
 
 export class JWTService implements ITokenService {
     constructor(
-        private readonly accessSecret: string = process.env.JWT_ACCESS_SECRET || 'tempaccesssecret',
-        private readonly refreshSecret: string = process.env.JWT_REFRESH_SECRET || 'temprefreshsecret',
+        private readonly accessSecret: string = env.JWT_ACCESS_SECRET ,
+        private readonly refreshSecret: string = env.JWT_REFRESH_SECRET || 'temprefreshsecret',
     ) { }
 
     async generateAccessToken(payload: object): Promise<string> {

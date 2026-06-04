@@ -1,11 +1,12 @@
 import { createClient,type RedisClientType } from "redis";
+import { env } from "../../../config/env.js";
 
 let redisClient: RedisClientType;
 
 export async function connectRedis(): Promise<void> {
     try {
         redisClient = createClient({
-            url: process.env.REDIS_URL!,
+            url: env.REDIS_URL,
             socket: { tls: false },
         }) as RedisClientType;
 

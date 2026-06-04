@@ -7,6 +7,7 @@ import type { User } from "../../../domain/entities/User.js";
 import type { ICacheService } from "../../../domain/interfaces/ICacheService.js";
 import { generateOTP } from "../../../shared/utils/generateOTP.js";
 import type { IEmailService } from "../../../domain/interfaces/IEmailService.js";
+import { env } from "../../../config/env.js";
 
 interface SignupData{
     name:string;
@@ -15,8 +16,8 @@ interface SignupData{
     password:string;
 }
 
-const OTP_TTL = parseInt(process.env.OTP_TTL_SECONDS || "120", 10);
-const SIGNUPDATA_TTL = parseInt(process.env.SIGNUPDATA_TTL_SECONDS || "600", 10);
+const OTP_TTL = env.OTP_TTL_SECONDS ;
+const SIGNUPDATA_TTL = env.SIGNUPDATA_TTL_SECONDS;
 
 
 export class SignupUseCase implements ISignupUseCase {

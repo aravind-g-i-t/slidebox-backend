@@ -8,6 +8,8 @@ import { authMiddleware } from "../middlewares/auth.middleware.js";
 const imageRoutes= express.Router();
 
 
+
+
 // image upload route
 
 imageRoutes.post(ROUTES.UPLOAD,authMiddleware,upload.array("images"),(req:Request,res:Response,next:NextFunction)=>imageController.uploadImage(req,res,next));

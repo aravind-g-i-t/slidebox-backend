@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser"
 import { errorHandler } from './presentation/http/middlewares/errorHandler.middleware.js';
 import appRoutes from './presentation/http/routes/appRoutes.js';
 import { requestLogger } from './presentation/http/middlewares/requestLogger.middleware.js';
+import { env } from './config/env.js';
 dotenv.config()
 
 
@@ -15,7 +16,7 @@ const app=express();
 
 app.use(
     cors({
-        origin:process.env.CLIENT_URL,
+        origin:env.CLIENT_URL,
         methods:["GET","POST","DELETE","PUT","PATCH"],
         credentials:true
     })

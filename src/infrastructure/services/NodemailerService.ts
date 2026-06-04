@@ -2,10 +2,11 @@ import nodemailer from 'nodemailer';
 import dotenv from 'dotenv'
 import { AppError } from '../../shared/errors/AppError.js';
 import type { IEmailService } from '../../domain/interfaces/IEmailService.js';
+import { env } from '../../config/env.js';
 dotenv.config();
 
-const slideboxEmail = process.env.SLIDEBOX_EMAIL;
-const slideboxPassword = process.env.SLIDEBOX_EMAIL_PASS;
+const slideboxEmail = env.SLIDEBOX_EMAIL;
+const slideboxPassword = env.SLIDEBOX_EMAIL_PASS;
 
 export class NodemailerService implements IEmailService {
     constructor(

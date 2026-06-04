@@ -7,10 +7,11 @@ import { AppError } from "../../../shared/errors/AppError.js";
 import { generateOTP } from "../../../shared/utils/generateOTP.js";
 import dotenv from "dotenv";
 import type { IVerifyEmailUseCase } from "../../iUseCases/auth/IVerifyEmailUseCase.js";
+import { env } from "../../../config/env.js";
 dotenv.config()
 
 
-const OTP_TTL = parseInt(process.env.OTP_TTL_SECONDS!,10)
+const OTP_TTL = env.OTP_TTL_SECONDS;
 
 
 export class VerifyEmailUseCase implements IVerifyEmailUseCase{

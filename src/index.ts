@@ -4,12 +4,13 @@ import dotenv from 'dotenv';
 import app from './expressApp.js';
 import { connectMongoDB } from './infrastructure/database/mongo/mongoConnection.js';
 import { connectRedis } from './infrastructure/database/redis/redisConnection.js';
+import { env } from './config/env.js';
 dotenv.config()
 
 
 
 
-const PORT=process.env.PORT || 5000;
+const PORT=env.PORT || 5000;
 
 async function startServer() {
     try {

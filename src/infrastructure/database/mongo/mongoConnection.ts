@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
+import { env } from '../../../config/env.js';
 
 export const connectMongoDB = async (): Promise<void> => {
     try {
-        const uri = process.env.MONGODB_URI || '';
+        const uri = env.MONGODB_URI;
         
         if (!uri) {
             console.log("Missing MONGODB_URI in .env");
