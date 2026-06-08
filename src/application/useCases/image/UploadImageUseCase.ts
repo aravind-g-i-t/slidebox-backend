@@ -1,8 +1,8 @@
-import type { IFileStorageService } from "../../../domain/interfaces/IFileStorageService.js";
-import type { IImageRepository } from "../../../domain/interfaces/IImageRepository.js";
-import type { ImageForDisplay } from "../../iUseCases/image/IGetImagesUseCase.js";
-import type { IUploadImageUseCase, UploadImageInputDTO } from "../../iUseCases/image/IUploadImageUseCase.js";
-import { ImageMapper } from "../../mapper/ImageMapper.js";
+import type { IFileStorageService } from "../../../domain/interfaces/IFileStorageService";
+import type { IImageRepository } from "../../../domain/interfaces/IImageRepository";
+import type { ImageForDisplay } from "../../iUseCases/image/IGetImagesUseCase";
+import type { IUploadImageUseCase, UploadImageInputDTO } from "../../iUseCases/image/IUploadImageUseCase";
+import { ImageMapper } from "../../mapper/ImageMapper";
 
 export class UploadImageUseCase implements IUploadImageUseCase {
     constructor(

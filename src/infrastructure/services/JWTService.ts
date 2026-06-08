@@ -1,10 +1,10 @@
 import jwt ,  { type SignOptions} from 'jsonwebtoken';
-import type { ITokenService } from '../../domain/interfaces/ITokenService.js';
-import { AppError } from '../../shared/errors/AppError.js';
-import { MESSAGES } from '../../shared/constants/messages.js';
-import { STATUS_CODES } from '../../shared/constants/httpStatus.js';
+import type { ITokenService } from '../../domain/interfaces/ITokenService';
+import { AppError } from '../../shared/errors/AppError';
+import { MESSAGES } from '../../shared/constants/messages';
+import { STATUS_CODES } from '../../shared/constants/httpStatus';
 import dotenv from "dotenv"
-import { env } from '../../config/env.js';
+import { env } from '../../config/env';
 dotenv.config()
 
 

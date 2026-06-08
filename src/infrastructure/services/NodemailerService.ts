@@ -1,8 +1,8 @@
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv'
-import { AppError } from '../../shared/errors/AppError.js';
-import type { IEmailService } from '../../domain/interfaces/IEmailService.js';
-import { env } from '../../config/env.js';
+import { AppError } from '../../shared/errors/AppError';
+import type { IEmailService } from '../../domain/interfaces/IEmailService';
+import { env } from '../../config/env';
 dotenv.config();
 
 const slideboxEmail = env.SLIDEBOX_EMAIL;

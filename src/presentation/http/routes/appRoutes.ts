@@ -1,7 +1,7 @@
 import express from 'express';
-import { ROUTES } from '../../../shared/constants/routes.js';
-import authRoutes from './authRoutes.js';
-import imageRoutes from './imageRoutes.js';
+import { ROUTES } from '../../../shared/constants/routes';
+import authRoutes from './authRoutes';
+import imageRoutes from './imageRoutes';
 const appRoutes = express.Router();
 
 appRoutes.use(ROUTES.AUTH,authRoutes)

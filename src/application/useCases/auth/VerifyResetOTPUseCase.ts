@@ -1,9 +1,9 @@
-import type { ICacheService } from "../../../domain/interfaces/ICacheService.js";
-import { STATUS_CODES } from "../../../shared/constants/httpStatus.js";
-import { MESSAGES } from "../../../shared/constants/messages.js";
-import { AppError } from "../../../shared/errors/AppError.js";
-import { generateToken } from "../../../shared/utils/generateToken.js";
-import type { IVerifyResetOTPUseCase } from "../../iUseCases/auth/IVerifyResetOTPUseCase.js";
+import type { ICacheService } from "../../../domain/interfaces/ICacheService";
+import { STATUS_CODES } from "../../../shared/constants/httpStatus";
+import { MESSAGES } from "../../../shared/constants/messages";
+import { AppError } from "../../../shared/errors/AppError";
+import { generateToken } from "../../../shared/utils/generateToken";
+import type { IVerifyResetOTPUseCase } from "../../iUseCases/auth/IVerifyResetOTPUseCase";
 
 
 

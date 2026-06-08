@@ -1,5 +1,5 @@
 import winston from "winston";
-import type { ILogger } from "../../domain/interfaces/ILogger.js";
+import type { ILogger } from "../../domain/interfaces/ILogger";
 
 export class WinstonLogger implements ILogger {
     private logger: winston.Logger;

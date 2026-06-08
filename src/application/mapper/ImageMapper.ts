@@ -1,5 +1,5 @@
-import type { Image } from "../../domain/entities/Image.js";
-import type { ImageForDisplay } from "../iUseCases/image/IGetImagesUseCase.js";
+import type { Image } from "../../domain/entities/Image";
+import type { ImageForDisplay } from "../iUseCases/image/IGetImagesUseCase";
 
 export class ImageMapper {
     static toImageForDisplay(image: Image): ImageForDisplay {

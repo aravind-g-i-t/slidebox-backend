@@ -1,10 +1,10 @@
-import type { ICacheService } from "../../../domain/interfaces/ICacheService.js";
-import type { IEmailService } from "../../../domain/interfaces/IEmailService.js";
+import type { ICacheService } from "../../../domain/interfaces/ICacheService";
+import type { IEmailService } from "../../../domain/interfaces/IEmailService";
 
-import { generateOTP } from "../../../shared/utils/generateOTP.js";
+import { generateOTP } from "../../../shared/utils/generateOTP";
 import dotenv from "dotenv";
-import type { IResendOTPUseCase } from "../../iUseCases/auth/IResendOTPUseCase.js";
-import { env } from "../../../config/env.js";
+import type { IResendOTPUseCase } from "../../iUseCases/auth/IResendOTPUseCase";
+import { env } from "../../../config/env";
 dotenv.config()
 
 

@@ -1,5 +1,5 @@
-import type { ICacheService } from "../../domain/interfaces/ICacheService.js";
-import { getRedisClient } from "../database/redis/redisConnection.js";
+import type { ICacheService } from "../../domain/interfaces/ICacheService";
+import { getRedisClient } from "../database/redis/redisConnection";
 
 
 export class RedisCacheService implements ICacheService{

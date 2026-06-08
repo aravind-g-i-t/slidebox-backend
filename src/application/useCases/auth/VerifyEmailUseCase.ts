@@ -1,13 +1,13 @@
-import type { ICacheService } from "../../../domain/interfaces/ICacheService.js";
-import type { IEmailService } from "../../../domain/interfaces/IEmailService.js";
-import type { IUserRepository } from "../../../domain/interfaces/IUserRepository.js";
-import { STATUS_CODES } from "../../../shared/constants/httpStatus.js";
-import { MESSAGES } from "../../../shared/constants/messages.js";
-import { AppError } from "../../../shared/errors/AppError.js";
-import { generateOTP } from "../../../shared/utils/generateOTP.js";
+import type { ICacheService } from "../../../domain/interfaces/ICacheService";
+import type { IEmailService } from "../../../domain/interfaces/IEmailService";
+import type { IUserRepository } from "../../../domain/interfaces/IUserRepository";
+import { STATUS_CODES } from "../../../shared/constants/httpStatus";
+import { MESSAGES } from "../../../shared/constants/messages";
+import { AppError } from "../../../shared/errors/AppError";
+import { generateOTP } from "../../../shared/utils/generateOTP";
 import dotenv from "dotenv";
-import type { IVerifyEmailUseCase } from "../../iUseCases/auth/IVerifyEmailUseCase.js";
-import { env } from "../../../config/env.js";
+import type { IVerifyEmailUseCase } from "../../iUseCases/auth/IVerifyEmailUseCase";
+import { env } from "../../../config/env";
 dotenv.config()
 
 

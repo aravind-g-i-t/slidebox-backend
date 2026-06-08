@@ -1,9 +1,9 @@
-import type { ITokenService } from "../../../domain/interfaces/ITokenService.js";
-import type { IUserRepository } from "../../../domain/interfaces/IUserRepository.js";
-import { STATUS_CODES } from "../../../shared/constants/httpStatus.js";
-import { MESSAGES } from "../../../shared/constants/messages.js";
-import { AppError } from "../../../shared/errors/AppError.js";
-import type { ITokenRefreshUseCase } from "../../iUseCases/auth/ITokenRefreshUseCase.js";
+import type { ITokenService } from "../../../domain/interfaces/ITokenService";
+import type { IUserRepository } from "../../../domain/interfaces/IUserRepository";
+import { STATUS_CODES } from "../../../shared/constants/httpStatus";
+import { MESSAGES } from "../../../shared/constants/messages";
+import { AppError } from "../../../shared/errors/AppError";
+import type { ITokenRefreshUseCase } from "../../iUseCases/auth/ITokenRefreshUseCase";
 
 type TokenPayload={
     id:string,

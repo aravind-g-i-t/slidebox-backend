@@ -1,17 +1,17 @@
-import { ResendOTPUseCase } from "../../application/useCases/auth/ResendOTPUseCase.js";
-import { ResetPasswordUseCase } from "../../application/useCases/auth/ResetPasswordUseCase.js";
-import { SigninUseCase } from "../../application/useCases/auth/SigninUseCase.js";
-import { SignupUseCase } from "../../application/useCases/auth/SignupUseCase.js";
-import { TokenRefreshUseCase } from "../../application/useCases/auth/TokenRefreshUseCase.js";
-import { VerifyEmailUseCase } from "../../application/useCases/auth/VerifyEmailUseCase.js";
-import { VerifyOTPUseCase } from "../../application/useCases/auth/VerifyOTPUseCase.js";
-import { VerifyResetOTPUseCase } from "../../application/useCases/auth/VerifyResetOTPUseCase.js";
-import { UserRepository } from "../../infrastructure/database/mongo/repositories/UserRepository.js";
-import { JWTService } from "../../infrastructure/services/JWTService.js";
-import { NodemailerService } from "../../infrastructure/services/NodemailerService.js";
-import { RedisCacheService } from "../../infrastructure/services/RedisCacheService.js";
-import { WinstonLogger } from "../../infrastructure/services/WinstonLogger.js";
-import { AuthController } from "../../presentation/http/controller/AuthController.js";
+import { ResendOTPUseCase } from "../../application/useCases/auth/ResendOTPUseCase";
+import { ResetPasswordUseCase } from "../../application/useCases/auth/ResetPasswordUseCase";
+import { SigninUseCase } from "../../application/useCases/auth/SigninUseCase";
+import { SignupUseCase } from "../../application/useCases/auth/SignupUseCase";
+import { TokenRefreshUseCase } from "../../application/useCases/auth/TokenRefreshUseCase";
+import { VerifyEmailUseCase } from "../../application/useCases/auth/VerifyEmailUseCase";
+import { VerifyOTPUseCase } from "../../application/useCases/auth/VerifyOTPUseCase";
+import { VerifyResetOTPUseCase } from "../../application/useCases/auth/VerifyResetOTPUseCase";
+import { UserRepository } from "../../infrastructure/database/mongo/repositories/UserRepository";
+import { JWTService } from "../../infrastructure/services/JWTService";
+import { NodemailerService } from "../../infrastructure/services/NodemailerService";
+import { RedisCacheService } from "../../infrastructure/services/RedisCacheService";
+import { WinstonLogger } from "../../infrastructure/services/WinstonLogger";
+import { AuthController } from "../../presentation/http/controller/AuthController";
 
 
 export const tokenService= new JWTService()

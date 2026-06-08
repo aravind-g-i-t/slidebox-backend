@@ -1,5 +1,5 @@
 import { createClient,type RedisClientType } from "redis";
-import { env } from "../../../config/env.js";
+import { env } from "../../../config/env";
 
 let redisClient: RedisClientType;
 

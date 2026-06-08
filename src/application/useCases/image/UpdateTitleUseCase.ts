@@ -1,8 +1,8 @@
-import type { IImageRepository } from "../../../domain/interfaces/IImageRepository.js";
-import { STATUS_CODES } from "../../../shared/constants/httpStatus.js";
-import { MESSAGES } from "../../../shared/constants/messages.js";
-import { AppError } from "../../../shared/errors/AppError.js";
-import type { IUpdateTitleUseCase } from "../../iUseCases/image/IUpdateTitleUseCase.js";
+import type { IImageRepository } from "../../../domain/interfaces/IImageRepository";
+import { STATUS_CODES } from "../../../shared/constants/httpStatus";
+import { MESSAGES } from "../../../shared/constants/messages";
+import { AppError } from "../../../shared/errors/AppError";
+import type { IUpdateTitleUseCase } from "../../iUseCases/image/IUpdateTitleUseCase";
 
 export class UpdateTitleUseCase implements IUpdateTitleUseCase{
     constructor(

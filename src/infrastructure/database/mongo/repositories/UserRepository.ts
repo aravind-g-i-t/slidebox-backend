@@ -1,6 +1,6 @@
-import type { User } from "../../../../domain/entities/User.js";
-import type { CreateUserInput, IUserRepository } from "../../../../domain/interfaces/IUserRepository.js";
-import { UserModel, type UserDoc } from "../models/UserModel.js";
+import type { User } from "../../../../domain/entities/User";
+import type { CreateUserInput, IUserRepository } from "../../../../domain/interfaces/IUserRepository";
+import { UserModel, type UserDoc } from "../models/UserModel";
 
 
 export class UserRepository implements IUserRepository {

@@ -1,6 +1,6 @@
-import type { IImageRepository } from "../../../domain/interfaces/IImageRepository.js";
-import type { GetImagesInputDTO, GetImagesOutputDTO, IGetImagesUseCase } from "../../iUseCases/image/IGetImagesUseCase.js";
-import { ImageMapper } from "../../mapper/ImageMapper.js";
+import type { IImageRepository } from "../../../domain/interfaces/IImageRepository";
+import type { GetImagesInputDTO, GetImagesOutputDTO, IGetImagesUseCase } from "../../iUseCases/image/IGetImagesUseCase";
+import { ImageMapper } from "../../mapper/ImageMapper";
 
 export class GetImagesUseCase implements IGetImagesUseCase {
     constructor(

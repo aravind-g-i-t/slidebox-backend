@@ -1,9 +1,9 @@
-import type { IFileStorageService } from "../../../domain/interfaces/IFileStorageService.js";
-import type { IImageRepository } from "../../../domain/interfaces/IImageRepository.js";
-import { STATUS_CODES } from "../../../shared/constants/httpStatus.js";
-import { MESSAGES } from "../../../shared/constants/messages.js";
-import { AppError } from "../../../shared/errors/AppError.js";
-import type { IUpdateFileUseCase, UpdateFileInputDTO } from "../../iUseCases/image/IUpdateFileUseCase.js";
+import type { IFileStorageService } from "../../../domain/interfaces/IFileStorageService";
+import type { IImageRepository } from "../../../domain/interfaces/IImageRepository";
+import { STATUS_CODES } from "../../../shared/constants/httpStatus";
+import { MESSAGES } from "../../../shared/constants/messages";
+import { AppError } from "../../../shared/errors/AppError";
+import type { IUpdateFileUseCase, UpdateFileInputDTO } from "../../iUseCases/image/IUpdateFileUseCase";
 
 export class UpdateFileUseCase implements IUpdateFileUseCase {
     constructor(

@@ -1,9 +1,9 @@
-import type { ICacheService } from "../../../domain/interfaces/ICacheService.js";
-import type { IUserRepository } from "../../../domain/interfaces/IUserRepository.js";
-import { STATUS_CODES } from "../../../shared/constants/httpStatus.js";
-import { MESSAGES } from "../../../shared/constants/messages.js";
-import { AppError } from "../../../shared/errors/AppError.js";
-import { hashPassword } from "../../../shared/utils/hash.js";
+import type { ICacheService } from "../../../domain/interfaces/ICacheService";
+import type { IUserRepository } from "../../../domain/interfaces/IUserRepository";
+import { STATUS_CODES } from "../../../shared/constants/httpStatus";
+import { MESSAGES } from "../../../shared/constants/messages";
+import { AppError } from "../../../shared/errors/AppError";
+import { hashPassword } from "../../../shared/utils/hash";
 
 export class ResetPasswordUseCase {
     constructor(

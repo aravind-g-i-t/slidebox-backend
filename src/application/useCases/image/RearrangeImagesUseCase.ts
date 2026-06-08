@@ -1,8 +1,8 @@
-import type { IImageRepository } from "../../../domain/interfaces/IImageRepository.js";
-import { STATUS_CODES } from "../../../shared/constants/httpStatus.js";
-import { MESSAGES } from "../../../shared/constants/messages.js";
-import { AppError } from "../../../shared/errors/AppError.js";
-import type { IRearrangeImagesUseCase, RearrangeImagesInputDTO } from "../../iUseCases/image/IRearrangeImages.js";
+import type { IImageRepository } from "../../../domain/interfaces/IImageRepository";
+import { STATUS_CODES } from "../../../shared/constants/httpStatus";
+import { MESSAGES } from "../../../shared/constants/messages";
+import { AppError } from "../../../shared/errors/AppError";
+import type { IRearrangeImagesUseCase, RearrangeImagesInputDTO } from "../../iUseCases/image/IRearrangeImages";
 
 export class RearrangeImagesUseCase implements IRearrangeImagesUseCase {
     constructor(

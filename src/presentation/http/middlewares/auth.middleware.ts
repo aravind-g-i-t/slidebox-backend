@@ -1,8 +1,8 @@
 import type { Request, Response, NextFunction } from "express";
-import type { ITokenService } from "../../../domain/interfaces/ITokenService.js";
-import { STATUS_CODES } from "../../../shared/constants/httpStatus.js";
-import { MESSAGES } from "../../../shared/constants/messages.js";
-import { tokenService } from "../../../setup/container/authContainer.js";
+import type { ITokenService } from "../../../domain/interfaces/ITokenService";
+import { STATUS_CODES } from "../../../shared/constants/httpStatus";
+import { MESSAGES } from "../../../shared/constants/messages";
+import { tokenService } from "../../../setup/container/authContainer";
 
 
 interface DecodedToken {

@@ -1,13 +1,13 @@
-import { DeleteImageUseCase } from "../../application/useCases/image/DeleteImageUseCase.js";
-import { GetImagesUseCase } from "../../application/useCases/image/GetImagesUseCase.js";
-import { RearrangeImagesUseCase } from "../../application/useCases/image/RearrangeImagesUseCase.js";
-import { UpdateFileUseCase } from "../../application/useCases/image/UpdateFileUseCase.js";
-import { UpdateTitleUseCase } from "../../application/useCases/image/UpdateTitleUseCase.js";
-import { UploadImageUseCase } from "../../application/useCases/image/UploadImageUseCase.js";
-import { ImageRepository } from "../../infrastructure/database/mongo/repositories/ImageRepository.js";
-import { CloudinaryService } from "../../infrastructure/services/CloudinaryService.js";
-import { ImageController } from "../../presentation/http/controller/ImageController.js";
-import { logger } from "./authContainer.js";
+import { DeleteImageUseCase } from "../../application/useCases/image/DeleteImageUseCase";
+import { GetImagesUseCase } from "../../application/useCases/image/GetImagesUseCase";
+import { RearrangeImagesUseCase } from "../../application/useCases/image/RearrangeImagesUseCase";
+import { UpdateFileUseCase } from "../../application/useCases/image/UpdateFileUseCase";
+import { UpdateTitleUseCase } from "../../application/useCases/image/UpdateTitleUseCase";
+import { UploadImageUseCase } from "../../application/useCases/image/UploadImageUseCase";
+import { ImageRepository } from "../../infrastructure/database/mongo/repositories/ImageRepository";
+import { CloudinaryService } from "../../infrastructure/services/CloudinaryService";
+import { ImageController } from "../../presentation/http/controller/ImageController";
+import { logger } from "./authContainer";
 
 const cloudinaryService= new CloudinaryService()
 

@@ -1,7 +1,7 @@
 import express from "express"
-import { ROUTES } from "../../../shared/constants/routes.js";
+import { ROUTES } from "../../../shared/constants/routes";
 import type {Request,Response,NextFunction} from "express"
-import { authController } from "../../../setup/container/authContainer.js";
+import { authController } from "../../../setup/container/authContainer";
 
 const authRoutes= express.Router();
 

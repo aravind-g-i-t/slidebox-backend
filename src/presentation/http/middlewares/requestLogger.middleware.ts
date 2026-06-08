@@ -1,5 +1,5 @@
 import type { Request,Response,NextFunction } from "express";
-import { logger } from "../../../setup/container/authContainer.js";
+import { logger } from "../../../setup/container/authContainer";
 
 export const requestLogger = (
     req: Request,

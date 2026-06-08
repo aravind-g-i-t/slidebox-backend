@@ -1,10 +1,10 @@
 
 import http from 'http'
 import dotenv from 'dotenv';
-import app from './expressApp.js';
-import { connectMongoDB } from './infrastructure/database/mongo/mongoConnection.js';
-import { connectRedis } from './infrastructure/database/redis/redisConnection.js';
-import { env } from './config/env.js';
+import app from './expressApp';
+import { connectMongoDB } from './infrastructure/database/mongo/mongoConnection';
+import { connectRedis } from './infrastructure/database/redis/redisConnection';
+import { env } from './config/env';
 dotenv.config()
 
 

@@ -1,15 +1,15 @@
 import type { Request, Response, NextFunction } from "express";
-import { STATUS_CODES } from "../../../shared/constants/httpStatus.js";
-import { ResponseBuilder } from "../../../shared/utils/ResponseBuilder.js";
-import { MESSAGES } from "../../../shared/constants/messages.js";
-import type { IUploadImageUseCase } from "../../../application/iUseCases/image/IUploadImageUseCase.js";
-import { AppError } from "../../../shared/errors/AppError.js";
-import type { IGetImagesUseCase } from "../../../application/iUseCases/image/IGetImagesUseCase.js";
-import type { IRearrangeImagesUseCase } from "../../../application/iUseCases/image/IRearrangeImages.js";
-import type { IUpdateTitleUseCase } from "../../../application/iUseCases/image/IUpdateTitleUseCase.js";
-import type { IUpdateFileUseCase } from "../../../application/iUseCases/image/IUpdateFileUseCase.js";
-import type { IDeleteImageUseCase } from "../../../application/iUseCases/image/IDeleteImageUseCase.js";
-import type { ILogger } from "../../../domain/interfaces/ILogger.js";
+import { STATUS_CODES } from "../../../shared/constants/httpStatus";
+import { ResponseBuilder } from "../../../shared/utils/ResponseBuilder";
+import { MESSAGES } from "../../../shared/constants/messages";
+import type { IUploadImageUseCase } from "../../../application/iUseCases/image/IUploadImageUseCase";
+import { AppError } from "../../../shared/errors/AppError";
+import type { IGetImagesUseCase } from "../../../application/iUseCases/image/IGetImagesUseCase";
+import type { IRearrangeImagesUseCase } from "../../../application/iUseCases/image/IRearrangeImages";
+import type { IUpdateTitleUseCase } from "../../../application/iUseCases/image/IUpdateTitleUseCase";
+import type { IUpdateFileUseCase } from "../../../application/iUseCases/image/IUpdateFileUseCase";
+import type { IDeleteImageUseCase } from "../../../application/iUseCases/image/IDeleteImageUseCase";
+import type { ILogger } from "../../../domain/interfaces/ILogger";
 
 export class ImageController {
     constructor(

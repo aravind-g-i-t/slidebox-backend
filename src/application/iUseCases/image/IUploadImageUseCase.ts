@@ -1,4 +1,4 @@
-import type { ImageForDisplay } from "./IGetImagesUseCase.js";
+import type { ImageForDisplay } from "./IGetImagesUseCase";
 
 
 interface FileData {

@@ -1,6 +1,6 @@
-import type { Image } from "../../../../domain/entities/Image.js";
-import type { CreateImageInput, IImageRepository } from "../../../../domain/interfaces/IImageRepository.js";
-import { ImageModel, type ImageDoc } from "../models/ImageModel.js";
+import type { Image } from "../../../../domain/entities/Image";
+import type { CreateImageInput, IImageRepository } from "../../../../domain/interfaces/IImageRepository";
+import { ImageModel, type ImageDoc } from "../models/ImageModel";
 
 
 

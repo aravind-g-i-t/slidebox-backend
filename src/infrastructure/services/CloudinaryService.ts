@@ -1,5 +1,5 @@
-import type { IFileStorageService } from "../../domain/interfaces/IFileStorageService.js";
-import cloudinary from "./cloudinaryConfig.js";
+import type { IFileStorageService } from "../../domain/interfaces/IFileStorageService";
+import cloudinary from "./cloudinaryConfig";
 
 export class CloudinaryService implements IFileStorageService {
     async uploadImage(filePath: string) {

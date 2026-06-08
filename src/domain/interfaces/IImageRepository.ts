@@ -1,4 +1,4 @@
-import type { Image } from "../entities/Image.js";
+import type { Image } from "../entities/Image";
 
 export interface CreateImageInput {
   userId: string;

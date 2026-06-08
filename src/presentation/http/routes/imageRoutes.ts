@@ -1,9 +1,9 @@
 import express from "express"
-import { ROUTES } from "../../../shared/constants/routes.js";
+import { ROUTES } from "../../../shared/constants/routes";
 import type {Request,Response,NextFunction} from "express"
-import { imageController } from "../../../setup/container/imageContainer.js";
-import { upload } from "../../../infrastructure/services/multerConfig.js";
-import { authMiddleware } from "../middlewares/auth.middleware.js";
+import { imageController } from "../../../setup/container/imageContainer";
+import { upload } from "../../../infrastructure/services/multerConfig";
+import { authMiddleware } from "../middlewares/auth.middleware";
 
 const imageRoutes= express.Router();
 
