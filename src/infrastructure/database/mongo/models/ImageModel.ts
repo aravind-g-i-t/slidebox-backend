@@ -23,7 +23,6 @@ const imageSchema = new Schema<ImageDoc>(
         title: {
             type: String,
             required: true,
-            unique: true,
         },
 
         imageUrl: {

@@ -2,18 +2,12 @@ import type { Image } from "../../../../domain/entities/Image";
 import type { CreateImageInput, IImageRepository } from "../../../../domain/interfaces/IImageRepository";
 import { ImageModel, type ImageDoc } from "../models/ImageModel";
 
-
-
-
-
-export class ImageRepository
-    implements IImageRepository {
+export class ImageRepository implements IImageRepository {
     async createMany(
-        images: CreateImageInput[]
+        images: CreateImageInput[],
+        session?: any
     ): Promise<Image[]> {
-
-
-        const docs = await ImageModel.insertMany(images);
+        const docs = await ImageModel.insertMany(images, { session });
         return docs.map(doc => {
             return {
                 id: doc._id.toString(),
@@ -25,91 +19,94 @@ export class ImageRepository
                 createdAt: doc.createdAt,
                 updatedAt: doc.updatedAt
             }
-        })
+        });
     }
 
-    async findByUserId(input:
-        {
-            userId: string,
-            skip: number,
-            limit: number
-        }
+    async findByUserId(
+        input: {
+            userId: string;
+            skip: number;
+            limit: number;
+        },
+        session?: any
     ): Promise<{ images: Image[]; totalCount: number }> {
-
-        const { userId, skip, limit } = input
+        const { userId, skip, limit } = input;
 
         const [docs, totalCount] = await Promise.all([
             ImageModel.find({ userId })
                 .sort({ order: -1 })
                 .skip(skip)
                 .limit(limit)
+                .session(session)
                 .exec(),
-            ImageModel.countDocuments({ userId })
+            ImageModel.countDocuments({ userId }).session(session)
         ]);
 
-        const images = docs.map(doc => this._toEntity(doc))
+        const images = docs.map(doc => this._toEntity(doc));
         return {
             images,
             totalCount
-        }
+        };
     }
 
-    async findById(id: string): Promise<Image | null> {
-        const doc = await ImageModel.findById(id);
-        return doc ? this._toEntity(doc) : null
+    async findById(id: string, session?: any): Promise<Image | null> {
+        const doc = await ImageModel.findById(id, null, { session });
+        return doc ? this._toEntity(doc) : null;
     }
 
     async getLastOrder(
-        userId: string
+        userId: string,
+        session?: any
     ): Promise<number> {
         const lastImage = await ImageModel
-            .findOne({ userId })
+            .findOne({ userId }, null, { session })
             .sort({ order: -1 });
 
         return lastImage ? lastImage.order : -1;
     }
 
-    async reArrangeDownwardss(fromOrder: number, toOrder: number, userId: string): Promise<void> {
+    async reArrangeDownwardss(fromOrder: number, toOrder: number, userId: string, session?: any): Promise<void> {
         await ImageModel.updateMany(
             {
                 userId,
                 order: { $gte: fromOrder, $lte: toOrder }
             },
-            { $inc: { order: -1 } }
+            { $inc: { order: -1 } },
+            { session }
         );
-    };
+    }
 
-    async reArrangeDownwards(fromOrder: number, toOrder: number, userId: string): Promise<void> {
+    async reArrangeDownwards(fromOrder: number, toOrder: number, userId: string, session?: any): Promise<void> {
         await ImageModel.updateMany(
             {
                 userId,
                 order: { $gte: fromOrder, $lte: toOrder }
             },
-            { $inc: { order: 1 } }
+            { $inc: { order: 1 } },
+            { session }
         );
-    };
+    }
 
-    async updateById(id: string, updateData: Partial<Image>): Promise<Image | null> {
+    async updateById(id: string, updateData: Partial<Image>, session?: any): Promise<Image | null> {
         const doc = await ImageModel.findByIdAndUpdate(
             id,
             { $set: updateData },
-            { returnDocument: "after" }
+            { returnDocument: "after", session }
         ).lean();
-        return doc ? this._toEntity(doc) : null
-
+        return doc ? this._toEntity(doc as any) : null;
     }
 
-    async deleteById(id: string): Promise<void> {
-        await ImageModel.findByIdAndDelete(id);
+    async deleteById(id: string, session?: any): Promise<void> {
+        await ImageModel.findByIdAndDelete(id, { session });
     }
 
-    async shiftOrdersDownFrom(fromOrder: number, userId: string): Promise<void> {
+    async shiftOrdersDownFrom(fromOrder: number, userId: string, session?: any): Promise<void> {
         await ImageModel.updateMany(
             { userId, order: { $gte: fromOrder } },
-            { $inc: { order: -1 } }
+            { $inc: { order: -1 } },
+            { session }
         );
     }
-
 
     _toEntity(doc: ImageDoc): Image {
         return {
@@ -121,9 +118,6 @@ export class ImageRepository
             order: doc.order,
             createdAt: doc.createdAt,
             updatedAt: doc.updatedAt
-        }
+        };
     }
-
-
-
 }

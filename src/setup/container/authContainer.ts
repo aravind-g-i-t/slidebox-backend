@@ -6,6 +6,7 @@ import { TokenRefreshUseCase } from "../../application/useCases/auth/TokenRefres
 import { VerifyEmailUseCase } from "../../application/useCases/auth/VerifyEmailUseCase";
 import { VerifyOTPUseCase } from "../../application/useCases/auth/VerifyOTPUseCase";
 import { VerifyResetOTPUseCase } from "../../application/useCases/auth/VerifyResetOTPUseCase";
+import { MongoTransactionManager } from "../../infrastructure/database/mongo/MongoTransactionManager";
 import { UserRepository } from "../../infrastructure/database/mongo/repositories/UserRepository";
 import { JWTService } from "../../infrastructure/services/JWTService";
 import { NodemailerService } from "../../infrastructure/services/NodemailerService";
@@ -20,6 +21,7 @@ const userRepository= new UserRepository();
 const emailService = new NodemailerService();
 const cacheService = new RedisCacheService()
 export const logger = new WinstonLogger()
+export const transactionManager= new MongoTransactionManager()
 
 const signupUseCase= new SignupUseCase(userRepository,cacheService,emailService);
 const signinUseCase = new SigninUseCase(userRepository,tokenService);

@@ -2,29 +2,29 @@ import type { User } from "../../../../domain/entities/User";
 import type { CreateUserInput, IUserRepository } from "../../../../domain/interfaces/IUserRepository";
 import { UserModel, type UserDoc } from "../models/UserModel";
 
-
 export class UserRepository implements IUserRepository {
-    async findByEmail(email: string): Promise<User | null> {
-        const doc= await UserModel.findOne({ email });
-        return doc? this._toEntity(doc):null
-    }
-
-    async findById(id: string): Promise<User | null> {
-        const doc= await UserModel.findById(id);
-        return doc? this._toEntity(doc):null
-    }
-
-    async create(user: CreateUserInput): Promise<User> {
-        const doc = await UserModel.create(user);
-        return this._toEntity(doc)
-    }
-
-    async findOneAndUpdate(filter: Partial<User>, updateData: Partial<CreateUserInput>): Promise<User | null> {
-        const doc = await UserModel.findOneAndUpdate(filter, updateData, { returnDocument: "after" });
+    async findByEmail(email: string, session?: any): Promise<User | null> {
+        const doc = await UserModel.findOne({ email }, null, { session });
         return doc ? this._toEntity(doc) : null;
     }
 
-    private _toEntity(doc:UserDoc):User{
+    async findById(id: string, session?: any): Promise<User | null> {
+        const doc = await UserModel.findById(id, null, { session });
+        return doc ? this._toEntity(doc) : null;
+    }
+
+    async create(user: CreateUserInput, session?: any): Promise<User> {
+        const doc = new UserModel(user);
+        await doc.save({ session });
+        return this._toEntity(doc);
+    }
+
+    async findOneAndUpdate(filter: Partial<User>, updateData: Partial<CreateUserInput>, session?: any): Promise<User | null> {
+        const doc = await UserModel.findOneAndUpdate(filter, updateData, { returnDocument: "after", session });
+        return doc ? this._toEntity(doc) : null;
+    }
+
+    private _toEntity(doc: UserDoc): User {
         return {
             id: doc._id.toString(),
             name: doc.name,
@@ -32,7 +32,6 @@ export class UserRepository implements IUserRepository {
             phone: doc.phone,
             password: doc.password,
             createdAt: doc.createdAt
-        }
+        };
     }
-
 }

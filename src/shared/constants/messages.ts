@@ -8,6 +8,8 @@ export const MESSAGES = {
     NOT_FOUND: "Resource not found",
     SERVER_ERROR: "An unexpected error occurred",
 
+    TRANSACTION_FAILED: "Failed to complete transaction",
+
     ROUTE_NOT_FOUND: "Route not found",
 
     USER_CREATED: "User created successfully",
@@ -54,7 +56,7 @@ export const MESSAGES = {
     UNAUTHORIZED: "You are not authorized to perform this action",
     IMAGE_UPDATED: "Image updated successfully",
     IMAGE_DELETED: "Image deleted successfully",
-
+    NO_TITLE: "Each image must have a title",
 
     INVALID_RESET_TOKEN: "The reset token is invalid or expired.",
     PASSWORD_RESET: "Password has been reset successfully."

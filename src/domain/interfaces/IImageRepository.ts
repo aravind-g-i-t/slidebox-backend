@@ -8,28 +8,29 @@ export interface CreateImageInput {
   order: number;
 }
 
-
 export interface IImageRepository {
-  createMany(images: CreateImageInput[]): Promise<Image[]>;
+  createMany(images: CreateImageInput[], session?: any): Promise<Image[]>;
 
-  reArrangeDownwards (fromOrder:number, toOrder:number, userId:string):Promise<void>
+  reArrangeDownwards(fromOrder: number, toOrder: number, userId: string, session?: any): Promise<void>;
 
-  reArrangeDownwardss (fromOrder:number, toOrder:number, userId:string):Promise<void>
+  reArrangeDownwardss(fromOrder: number, toOrder: number, userId: string, session?: any): Promise<void>;
 
-  updateById(id:string, updateData:Partial<Image>):Promise<Image | null>
+  updateById(id: string, updateData: Partial<Image>, session?: any): Promise<Image | null>;
 
-  findById(id: string): Promise<Image | null>
+  findById(id: string, session?: any): Promise<Image | null>;
 
-  findByUserId(input: {
-    userId: string,
-    skip: number,
-    limit: number
-  }
-  ): Promise<{images:Image[]; totalCount:number}>
+  findByUserId(
+    input: {
+      userId: string;
+      skip: number;
+      limit: number;
+    },
+    session?: any
+  ): Promise<{ images: Image[]; totalCount: number }>;
 
-  getLastOrder(userId: string): Promise<number>;
+  getLastOrder(userId: string, session?: any): Promise<number>;
 
-  deleteById(id:string):Promise<void>
+  deleteById(id: string, session?: any): Promise<void>;
 
-  shiftOrdersDownFrom(fromOrder: number, userId: string): Promise<void>
+  shiftOrdersDownFrom(fromOrder: number, userId: string, session?: any): Promise<void>;
 }

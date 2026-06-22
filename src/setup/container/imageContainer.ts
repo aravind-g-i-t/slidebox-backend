@@ -7,7 +7,7 @@ import { UploadImageUseCase } from "../../application/useCases/image/UploadImage
 import { ImageRepository } from "../../infrastructure/database/mongo/repositories/ImageRepository";
 import { CloudinaryService } from "../../infrastructure/services/CloudinaryService";
 import { ImageController } from "../../presentation/http/controller/ImageController";
-import { logger } from "./authContainer";
+import { logger, transactionManager } from "./authContainer";
 
 const cloudinaryService= new CloudinaryService()
 
@@ -17,12 +17,12 @@ const uploadImageUseCase= new UploadImageUseCase(imageRepository,cloudinaryServi
 
 const getImagesUseCase= new GetImagesUseCase(imageRepository)
 
-const reArrangeImagesUseCase= new RearrangeImagesUseCase(imageRepository)
+const reArrangeImagesUseCase= new RearrangeImagesUseCase(imageRepository,transactionManager)
 
 const updateTitleUseCase= new UpdateTitleUseCase(imageRepository)
 
-const updateFileUseCase= new UpdateFileUseCase(imageRepository,cloudinaryService)
+const updateFileUseCase= new UpdateFileUseCase(imageRepository,cloudinaryService,transactionManager)
 
-const deleteImageUseCase = new DeleteImageUseCase(imageRepository, cloudinaryService);
+const deleteImageUseCase = new DeleteImageUseCase(imageRepository, cloudinaryService,transactionManager);
 
 export const imageController = new ImageController(logger,uploadImageUseCase,getImagesUseCase,reArrangeImagesUseCase,updateTitleUseCase,updateFileUseCase,deleteImageUseCase);
