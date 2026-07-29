@@ -1,12 +1,12 @@
-import type { IUserRepository } from "../../../domain/interfaces/IUserRepository";
+import type { IUserRepository } from "../../interfaces/services/IUserRepository";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";
 import { MESSAGES } from "../../../shared/constants/messages";
 import { AppError } from "../../../shared/errors/AppError";
-import type { ISignupUseCase, SignupInputDTO } from "../../iUseCases/auth/ISignupUseCase";
+import type { ISignupUseCase, SignupInputDTO } from "../../interfaces/iUseCases/auth/ISignupUseCase";
 import type { User } from "../../../domain/entities/User";
-import type { ICacheService } from "../../../domain/interfaces/ICacheService";
+import type { ICacheService } from "../../interfaces/services/ICacheService";
 import { generateOTP } from "../../../shared/utils/generateOTP";
-import type { IEmailService } from "../../../domain/interfaces/IEmailService";
+import type { IEmailService } from "../../interfaces/services/IEmailService";
 import { env } from "../../../config/env";
 
 interface SignupData{

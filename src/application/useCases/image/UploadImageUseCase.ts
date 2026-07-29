@@ -1,10 +1,10 @@
-import type { IFileStorageService } from "../../../domain/interfaces/IFileStorageService";
-import type { IImageRepository } from "../../../domain/interfaces/IImageRepository";
+import type { IFileStorageService } from "../../interfaces/services/IFileStorageService";
+import type { IImageRepository } from "../../interfaces/repositories/IImageRepository";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";
 import { MESSAGES } from "../../../shared/constants/messages";
 import { AppError } from "../../../shared/errors/AppError";
-import type { ImageForDisplay } from "../../iUseCases/image/IGetImagesUseCase";
-import type { IUploadImageUseCase, UploadImageInputDTO } from "../../iUseCases/image/IUploadImageUseCase";
+import type { ImageForDisplay } from "../../interfaces/iUseCases/image/IGetImagesUseCase";
+import type { IUploadImageUseCase, UploadImageInputDTO } from "../../interfaces/iUseCases/image/IUploadImageUseCase";
 import { ImageMapper } from "../../mapper/ImageMapper";
 
 export class UploadImageUseCase implements IUploadImageUseCase {

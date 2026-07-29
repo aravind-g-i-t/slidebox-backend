@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from "express";
-import type { ITokenService } from "../../../domain/interfaces/ITokenService";
+import type { ITokenService } from "../../../application/interfaces/services/ITokenService";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";
 import { MESSAGES } from "../../../shared/constants/messages";
 import { tokenService } from "../../../setup/container/authContainer";

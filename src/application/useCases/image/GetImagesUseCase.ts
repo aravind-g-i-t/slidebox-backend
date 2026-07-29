@@ -1,5 +1,5 @@
-import type { IImageRepository } from "../../../domain/interfaces/IImageRepository";
-import type { GetImagesInputDTO, GetImagesOutputDTO, IGetImagesUseCase } from "../../iUseCases/image/IGetImagesUseCase";
+import type { IImageRepository } from "../../interfaces/repositories/IImageRepository";
+import type { GetImagesInputDTO, GetImagesOutputDTO, IGetImagesUseCase } from "../../interfaces/iUseCases/image/IGetImagesUseCase";
 import { ImageMapper } from "../../mapper/ImageMapper";
 
 export class GetImagesUseCase implements IGetImagesUseCase {

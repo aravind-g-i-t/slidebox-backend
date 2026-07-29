@@ -2,14 +2,14 @@ import type { Request, Response, NextFunction } from "express";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";
 import { ResponseBuilder } from "../../../shared/utils/ResponseBuilder";
 import { MESSAGES } from "../../../shared/constants/messages";
-import type { IUploadImageUseCase } from "../../../application/iUseCases/image/IUploadImageUseCase";
+import type { IUploadImageUseCase } from "../../../application/interfaces/iUseCases/image/IUploadImageUseCase";
 import { AppError } from "../../../shared/errors/AppError";
-import type { IGetImagesUseCase } from "../../../application/iUseCases/image/IGetImagesUseCase";
-import type { IRearrangeImagesUseCase } from "../../../application/iUseCases/image/IRearrangeImages";
-import type { IUpdateTitleUseCase } from "../../../application/iUseCases/image/IUpdateTitleUseCase";
-import type { IUpdateFileUseCase } from "../../../application/iUseCases/image/IUpdateFileUseCase";
-import type { IDeleteImageUseCase } from "../../../application/iUseCases/image/IDeleteImageUseCase";
-import type { ILogger } from "../../../domain/interfaces/ILogger";
+import type { IGetImagesUseCase } from "../../../application/interfaces/iUseCases/image/IGetImagesUseCase";
+import type { IRearrangeImagesUseCase } from "../../../application/interfaces/iUseCases/image/IRearrangeImages";
+import type { IUpdateTitleUseCase } from "../../../application/interfaces/iUseCases/image/IUpdateTitleUseCase";
+import type { IUpdateFileUseCase } from "../../../application/interfaces/iUseCases/image/IUpdateFileUseCase";
+import type { IDeleteImageUseCase } from "../../../application/interfaces/iUseCases/image/IDeleteImageUseCase";
+import type { ILogger } from "../../../application/interfaces/services/ILogger";
 
 export class ImageController {
     constructor(

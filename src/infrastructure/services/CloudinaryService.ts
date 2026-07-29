@@ -1,4 +1,4 @@
-import type { IFileStorageService } from "../../domain/interfaces/IFileStorageService";
+import type { IFileStorageService } from "../../application/interfaces/services/IFileStorageService";
 import cloudinary from "./cloudinaryConfig";
 
 export class CloudinaryService implements IFileStorageService {

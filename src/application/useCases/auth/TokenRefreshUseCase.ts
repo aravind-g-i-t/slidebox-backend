@@ -1,9 +1,9 @@
-import type { ITokenService } from "../../../domain/interfaces/ITokenService";
-import type { IUserRepository } from "../../../domain/interfaces/IUserRepository";
+import type { ITokenService } from "../../interfaces/services/ITokenService";
+import type { IUserRepository } from "../../interfaces/services/IUserRepository";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";
 import { MESSAGES } from "../../../shared/constants/messages";
 import { AppError } from "../../../shared/errors/AppError";
-import type { ITokenRefreshUseCase } from "../../iUseCases/auth/ITokenRefreshUseCase";
+import type { ITokenRefreshUseCase } from "../../interfaces/iUseCases/auth/ITokenRefreshUseCase";
 
 type TokenPayload={
     id:string,

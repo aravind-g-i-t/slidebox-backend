@@ -1,5 +1,5 @@
 import jwt ,  { type SignOptions} from 'jsonwebtoken';
-import type { ITokenService } from '../../domain/interfaces/ITokenService';
+import type { ITokenService } from '../../application/interfaces/services/ITokenService';
 import { AppError } from '../../shared/errors/AppError';
 import { MESSAGES } from '../../shared/constants/messages';
 import { STATUS_CODES } from '../../shared/constants/httpStatus';

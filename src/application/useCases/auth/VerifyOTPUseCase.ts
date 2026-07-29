@@ -1,10 +1,10 @@
-import type { ICacheService } from "../../../domain/interfaces/ICacheService";
-import type { IUserRepository } from "../../../domain/interfaces/IUserRepository";
+import type { ICacheService } from "../../interfaces/services/ICacheService";
+import type { IUserRepository } from "../../interfaces/services/IUserRepository";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";
 import { MESSAGES } from "../../../shared/constants/messages";
 import { AppError } from "../../../shared/errors/AppError";
 import { hashPassword } from "../../../shared/utils/hash";
-import type { IVerifyOTPUseCase } from "../../iUseCases/auth/IVerifyOTPUseCase";
+import type { IVerifyOTPUseCase } from "../../interfaces/iUseCases/auth/IVerifyOTPUseCase";
 
 interface SignupData{
     name:string;

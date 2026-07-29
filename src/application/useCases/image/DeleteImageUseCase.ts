@@ -1,10 +1,10 @@
-import type { IFileStorageService } from "../../../domain/interfaces/IFileStorageService";
-import type { IImageRepository } from "../../../domain/interfaces/IImageRepository";
-import type { ITransactionManager } from "../../../domain/interfaces/ITransactionManager";
+import type { IFileStorageService } from "../../interfaces/services/IFileStorageService";
+import type { IImageRepository } from "../../interfaces/repositories/IImageRepository";
+import type { ITransactionManager } from "../../interfaces/services/ITransactionManager";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";
 import { MESSAGES } from "../../../shared/constants/messages";
 import { AppError } from "../../../shared/errors/AppError";
-import type { IDeleteImageUseCase } from "../../iUseCases/image/IDeleteImageUseCase";
+import type { IDeleteImageUseCase } from "../../interfaces/iUseCases/image/IDeleteImageUseCase";
 
 export class DeleteImageUseCase implements IDeleteImageUseCase{
     constructor(

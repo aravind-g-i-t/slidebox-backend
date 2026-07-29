@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv'
 import { AppError } from '../../shared/errors/AppError';
-import type { IEmailService } from '../../domain/interfaces/IEmailService';
+import type { IEmailService } from '../../application/interfaces/services/IEmailService';
 import { env } from '../../config/env';
 dotenv.config();
 

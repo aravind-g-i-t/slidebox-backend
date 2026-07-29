@@ -1,5 +1,5 @@
 import type { User } from "../../../../domain/entities/User";
-import type { CreateUserInput, IUserRepository } from "../../../../domain/interfaces/IUserRepository";
+import type { CreateUserInput, IUserRepository } from "../../../../application/interfaces/services/IUserRepository";
 import { UserModel, type UserDoc } from "../models/UserModel";
 
 export class UserRepository implements IUserRepository {

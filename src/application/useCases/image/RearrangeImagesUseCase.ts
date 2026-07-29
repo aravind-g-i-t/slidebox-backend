@@ -1,9 +1,9 @@
-import type { IImageRepository } from "../../../domain/interfaces/IImageRepository";
-import type { ITransactionManager } from "../../../domain/interfaces/ITransactionManager";
+import type { IImageRepository } from "../../interfaces/repositories/IImageRepository";
+import type { ITransactionManager } from "../../interfaces/services/ITransactionManager";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";
 import { MESSAGES } from "../../../shared/constants/messages";
 import { AppError } from "../../../shared/errors/AppError";
-import type { IRearrangeImagesUseCase, RearrangeImagesInputDTO } from "../../iUseCases/image/IRearrangeImages";
+import type { IRearrangeImagesUseCase, RearrangeImagesInputDTO } from "../../interfaces/iUseCases/image/IRearrangeImages";
 
 export class RearrangeImagesUseCase implements IRearrangeImagesUseCase {
     constructor(

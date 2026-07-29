@@ -1,4 +1,4 @@
-import type { ICacheService } from "../../domain/interfaces/ICacheService";
+import type { ICacheService } from "../../application/interfaces/services/ICacheService";
 import { getRedisClient } from "../database/redis/redisConnection";
 
 

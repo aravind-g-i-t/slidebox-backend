@@ -1,9 +1,9 @@
-import type { ICacheService } from "../../../domain/interfaces/ICacheService";
-import type { IEmailService } from "../../../domain/interfaces/IEmailService";
+import type { ICacheService } from "../../interfaces/services/ICacheService";
+import type { IEmailService } from "../../interfaces/services/IEmailService";
 
 import { generateOTP } from "../../../shared/utils/generateOTP";
 import dotenv from "dotenv";
-import type { IResendOTPUseCase } from "../../iUseCases/auth/IResendOTPUseCase";
+import type { IResendOTPUseCase } from "../../interfaces/iUseCases/auth/IResendOTPUseCase";
 import { env } from "../../../config/env";
 dotenv.config()
 

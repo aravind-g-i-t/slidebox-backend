@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import type { ITransactionManager } from "../../../domain/interfaces/ITransactionManager";
+import type { ITransactionManager } from "../../../application/interfaces/services/ITransactionManager";
 import { AppError } from "../../../shared/errors/AppError";
 import { MESSAGES } from "../../../shared/constants/messages";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";

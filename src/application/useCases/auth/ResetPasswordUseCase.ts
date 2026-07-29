@@ -1,5 +1,5 @@
-import type { ICacheService } from "../../../domain/interfaces/ICacheService";
-import type { IUserRepository } from "../../../domain/interfaces/IUserRepository";
+import type { ICacheService } from "../../interfaces/services/ICacheService";
+import type { IUserRepository } from "../../interfaces/services/IUserRepository";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";
 import { MESSAGES } from "../../../shared/constants/messages";
 import { AppError } from "../../../shared/errors/AppError";

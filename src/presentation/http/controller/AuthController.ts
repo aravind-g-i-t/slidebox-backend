@@ -1,17 +1,17 @@
-import type { ISignupUseCase } from "../../../application/iUseCases/auth/ISignupUseCase";
+import type { ISignupUseCase } from "../../../application/interfaces/iUseCases/auth/ISignupUseCase";
 import type { Request, Response, NextFunction } from "express";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";
 import { ResponseBuilder } from "../../../shared/utils/ResponseBuilder";
 import { MESSAGES } from "../../../shared/constants/messages";
-import type { ISigninUseCase } from "../../../application/iUseCases/auth/ISigninUseCase";
-import type { IVerifyOTPUseCase } from "../../../application/iUseCases/auth/IVerifyOTPUseCase";
+import type { ISigninUseCase } from "../../../application/interfaces/iUseCases/auth/ISigninUseCase";
+import type { IVerifyOTPUseCase } from "../../../application/interfaces/iUseCases/auth/IVerifyOTPUseCase";
 import { AppError } from "../../../shared/errors/AppError";
-import type { ITokenRefreshUseCase } from "../../../application/iUseCases/auth/ITokenRefreshUseCase";
-import type { IVerifyResetOTPUseCase } from "../../../application/iUseCases/auth/IVerifyResetOTPUseCase";
-import type { IResetPasswordUseCase } from "../../../application/iUseCases/auth/IResetPasswordUseCase";
-import type { IVerifyEmailUseCase } from "../../../application/iUseCases/auth/IVerifyEmailUseCase";
-import type { IResendOTPUseCase } from "../../../application/iUseCases/auth/IResendOTPUseCase";
-import type { ILogger } from "../../../domain/interfaces/ILogger";
+import type { ITokenRefreshUseCase } from "../../../application/interfaces/iUseCases/auth/ITokenRefreshUseCase";
+import type { IVerifyResetOTPUseCase } from "../../../application/interfaces/iUseCases/auth/IVerifyResetOTPUseCase";
+import type { IResetPasswordUseCase } from "../../../application/interfaces/iUseCases/auth/IResetPasswordUseCase";
+import type { IVerifyEmailUseCase } from "../../../application/interfaces/iUseCases/auth/IVerifyEmailUseCase";
+import type { IResendOTPUseCase } from "../../../application/interfaces/iUseCases/auth/IResendOTPUseCase";
+import type { ILogger } from "../../../application/interfaces/services/ILogger";
 
 export class AuthController {
     constructor(

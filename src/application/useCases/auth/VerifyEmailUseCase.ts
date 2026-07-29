@@ -1,12 +1,12 @@
-import type { ICacheService } from "../../../domain/interfaces/ICacheService";
-import type { IEmailService } from "../../../domain/interfaces/IEmailService";
-import type { IUserRepository } from "../../../domain/interfaces/IUserRepository";
+import type { ICacheService } from "../../interfaces/services/ICacheService";
+import type { IEmailService } from "../../interfaces/services/IEmailService";
+import type { IUserRepository } from "../../interfaces/services/IUserRepository";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";
 import { MESSAGES } from "../../../shared/constants/messages";
 import { AppError } from "../../../shared/errors/AppError";
 import { generateOTP } from "../../../shared/utils/generateOTP";
 import dotenv from "dotenv";
-import type { IVerifyEmailUseCase } from "../../iUseCases/auth/IVerifyEmailUseCase";
+import type { IVerifyEmailUseCase } from "../../interfaces/iUseCases/auth/IVerifyEmailUseCase";
 import { env } from "../../../config/env";
 dotenv.config()
 

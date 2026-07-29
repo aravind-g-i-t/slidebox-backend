@@ -1,9 +1,9 @@
-import type { ICacheService } from "../../../domain/interfaces/ICacheService";
+import type { ICacheService } from "../../interfaces/services/ICacheService";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";
 import { MESSAGES } from "../../../shared/constants/messages";
 import { AppError } from "../../../shared/errors/AppError";
 import { generateToken } from "../../../shared/utils/generateToken";
-import type { IVerifyResetOTPUseCase } from "../../iUseCases/auth/IVerifyResetOTPUseCase";
+import type { IVerifyResetOTPUseCase } from "../../interfaces/iUseCases/auth/IVerifyResetOTPUseCase";
 
 
 

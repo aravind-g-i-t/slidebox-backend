@@ -1,5 +1,5 @@
 import type { Image } from "../../../../domain/entities/Image";
-import type { CreateImageInput, IImageRepository } from "../../../../domain/interfaces/IImageRepository";
+import type { CreateImageInput, IImageRepository } from "../../../../application/interfaces/repositories/IImageRepository";
 import { ImageModel, type ImageDoc } from "../models/ImageModel";
 
 export class ImageRepository implements IImageRepository {

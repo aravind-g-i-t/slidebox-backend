@@ -1,4 +1,4 @@
-import type { Image } from "../entities/Image";
+import type { Image } from "../../../domain/entities/Image";
 
 export interface CreateImageInput {
   userId: string;

@@ -1,7 +1,7 @@
-import type { IUserRepository } from "../../../domain/interfaces/IUserRepository";
-import type { ITokenService } from "../../../domain/interfaces/ITokenService";
+import type { IUserRepository } from "../../interfaces/services/IUserRepository";
+import type { ITokenService } from "../../interfaces/services/ITokenService";
 import { comparePassword } from "../../../shared/utils/hash";
-import type { SigninInputDTO, SigninOutputDTO } from "../../iUseCases/auth/ISigninUseCase";
+import type { SigninInputDTO, SigninOutputDTO } from "../../interfaces/iUseCases/auth/ISigninUseCase";
 
 export class SigninUseCase {
     constructor(

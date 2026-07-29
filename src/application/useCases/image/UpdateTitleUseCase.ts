@@ -1,8 +1,8 @@
-import type { IImageRepository } from "../../../domain/interfaces/IImageRepository";
+import type { IImageRepository } from "../../interfaces/repositories/IImageRepository";
 import { STATUS_CODES } from "../../../shared/constants/httpStatus";
 import { MESSAGES } from "../../../shared/constants/messages";
 import { AppError } from "../../../shared/errors/AppError";
-import type { IUpdateTitleUseCase } from "../../iUseCases/image/IUpdateTitleUseCase";
+import type { IUpdateTitleUseCase } from "../../interfaces/iUseCases/image/IUpdateTitleUseCase";
 
 export class UpdateTitleUseCase implements IUpdateTitleUseCase{
     constructor(
